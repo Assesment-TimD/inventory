@@ -1,0 +1,32 @@
+import React from 'react';
+import './style.css'; // File CSS untuk gaya halaman landing
+
+const LandingPage = () => {
+  return (
+    <div className="landing-page">
+      <header className="header">
+        <h1>Inventory Management</h1>
+        <p>Welcome to our Inventory Management System</p>
+      </header>
+      <section className="features">
+        <div className="feature">
+          <h2>Real-time Tracking</h2>
+          <p>Track your inventory in real-time to ensure accurate stock levels.</p>
+        </div>
+        <div className="feature">
+          <h2>Efficient Management</h2>
+          <p>Manage inventory efficiently and optimize stock storage.</p>
+        </div>
+        <div className="feature">
+          <h2>Data Analysis</h2>
+          <p>Analyze inventory data to make informed business decisions.</p>
+        </div>
+      </section>
+      <footer className="footer">
+        <p>&copy; 2023 Inventory Management System</p>
+      </footer>
+    </div>
+  );
+};
+
+export default LandingPage;
