@@ -1,5 +1,6 @@
 Management Inventory Sederhana
-Hak Akses Admin
+
+A. HAK AKSES ADMIN
 
 1. REGISTER
    
@@ -28,7 +29,7 @@ Hak Akses Admin
   ![image](https://github.com/Sisbus/inventory/assets/82956295/7823b6b8-2f3b-4fa0-b09c-1fa43ff85a2d)
 
 
-Hak Akses Shipper
+B. HAK AKSES SHIPPER
 
 ![image](https://github.com/Sisbus/inventory/assets/82956295/af526196-2040-4c12-8ef5-bc2c6e6d9fe1)
 
