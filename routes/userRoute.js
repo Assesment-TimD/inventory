@@ -50,6 +50,16 @@ user_route.get('/update_shipment/:id', auth.isAdmin, auth.isLogin, shipmentContr
 user_route.post('/update_shipments/:id', auth.isAdmin, auth.isLogin, shipmentController.postUpdateShipment);
 user_route.get('/delete_shipment/:id', auth.isAdmin, auth.isLogin, shipmentController.deleteShipment);
 
+user_route.get('/shipper/homepage', auth.isShipper, auth.isLogin, userController.loadHomeShipper );
+
+user_route.get('/shipper/shipment', auth.isShipper, auth.isLogin, shipmentController.loadShipmentShipper);
+user_route.get('/shipper/create_shipment', auth.isShipper, auth.isLogin, shipmentController.createShipmentShipper);
+user_route.post('/shipper/createshipments', auth.isShipper, auth.isLogin, shipmentController.postShipmentShipper);
+user_route.get('/shipper/update_shipment/:id', auth.isShipper, auth.isLogin, shipmentController.updateShipmentShipper);
+user_route.post('/shipper/update_shipments/:id', auth.isShipper, auth.isLogin, shipmentController.postUpdateShipmentShipper);
+user_route.get('/shipper/delete_shipment/:id', auth.isShipper, auth.isLogin, shipmentController.deleteShipmentShipper);
+
+
 
 user_route.get('*', function(req, res){
     res.redirect('/login');

@@ -71,11 +71,91 @@ const updateShipment = async (req, res) =>{
         });
   }
 
+
+  const loadShipmentShipper = async (req, res) => {
+    const id = req.params.id;
+    try {
+      const shipment = await Shipment.find(id);
+      res.render('shipper/shipment/shipment_read', { user:req.session.user, shipment:shipment});
+    } catch (err) {
+      console.error('Kesalahan:', err);
+      res.sendStatus(500);
+    }
+}
+
+const createShipmentShipper = async (req, res) => {
+  const id = req.params.id;
+  try {
+  const shipment = await Shipment.find(id);
+    res.render('shipper/shipment/create_shipment', { user:req.session.user, shipment:shipment});
+  } catch (err) {
+    console.error('Kesalahan:', err);
+    res.sendStatus(500);
+  }
+}
+
+const postShipmentShipper = async (req, res)=>{
+  try{
+      const { product, date, address, cost, weight, shipper, recipient} = req.body;
+      const newPost = new Shipment({
+          product, date, address, cost, weight, shipper, recipient
+      });
+  
+      Shipment.insertMany([newPost])
+      .then(() => {
+        res.redirect('/shipper/shipment');
+      })
+  } catch (error) {
+      console.log(error.message);
+      res.render('/shipper/shipmet', { user: req.session.user, errorMessage: 'Failed to create data' });
+  }
+}
+
+const updateShipmentShipper = async (req, res) =>{
+  const id = req.params.id;
+  try{
+      const shipment = await Shipment.findById(id);
+      res.render('shipper/shipment/edit_shipment', {user: req.session.user, shipment:shipment });
+  }
+
+  catch (error){
+      console.log(error.message);
+  }
+}
+
+const postUpdateShipmentShipper = async (req, res) => {
+  const id = req.params.id;
+  const { product, date, address, cost, weight, shipper, recipient } = req.body;
+  Shipment.findByIdAndUpdate(id, {product, date, address, cost, weight, shipper, recipient})
+    .then(() => {
+      res.redirect('/shipper/shipment');
+    })
+    .catch(err => console.log(err));
+}
+
+const deleteShipmentShipper = async (req, res) => {
+  const id = req.params.id;
+  Shipment.findByIdAndDelete(id)
+      .then(() => {
+          res.redirect('/shipper/shipment');
+      })
+      .catch(err => {
+          console.log(err);
+          res.status(500).send('Server Error');
+      });
+}
+
 module.exports={
     loadShipment,
     createShipment,
     postShipment,
     updateShipment,
     postUpdateShipment,
-    deleteShipment
+    deleteShipment,
+    loadShipmentShipper,
+    createShipmentShipper,
+    postShipmentShipper,
+    updateShipmentShipper,
+    postUpdateShipmentShipper,
+    deleteShipmentShipper
 }

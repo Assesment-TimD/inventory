@@ -1,0 +1,47 @@
+<%- include('../../layout/header_shipper.ejs')%>
+
+    <div id="content">
+        <h2>Welcome to the Shipment Page</h2>
+        <a href="/shipper/create_shipment" class="button-create"><i class="fa-solid fa-plus"></i> Create</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Order ID</th>
+                    <th>Product</th>
+                    <th>Shipment Date</th>
+                    <th>Shipping Address</th>
+                    <th>Cost</th>
+                    <th>Weight</th>
+                    <th>Shipper</th>
+                    <th>Recipient</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% let nomor = 1; %>
+                <% if(shipment.length > 0 ){
+                    for(let i = 0; i <shipment.length; i++){
+                         %>
+                         <tr>
+                            <td><%= nomor++ %></td> 
+                           <td><%= shipment[i]['id'] %></td>
+                           <td><%= shipment[i]['product'] %></td>
+                           <td><%= shipment[i]['date'] %></td>
+                           <td><%= shipment[i]['address'] %></td>
+                           <td><%= shipment[i]['cost'] %></td>
+                           <td><%= shipment[i]['weight'] %></td>
+                           <td><%= shipment[i]['shipper'] %></td>
+                           <td><%= shipment[i]['recipient'] %></td>
+                           <td>
+                             <a href="/shipper/update_shipment/<%= shipment[i]['id'] %>" class="button-edit"id="kolom5" >Update</a>
+                             <a href="/shipper/delete_shipment/<%= shipment[i]['id'] %>" class="button-hapus" id="kolom6">Delete</a>  
+                         </td>
+                             </tr>
+                           </tr>
+                         </tr>
+                 <%}}%>
+            </tbody>
+        </table>
+    </div>
+    <%- include('../../layout/footer.ejs')%>

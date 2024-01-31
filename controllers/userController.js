@@ -19,6 +19,8 @@ const register = async (req, res)=>{
             name: req.body.name,
             email: req.body.email,
             username: req.body.username,
+            tlp: req.body.tlp,
+            alamat: req.body.alamat,
             password: passwordHash,
             role : req.body.role,
         });
@@ -163,6 +165,16 @@ const updateDataUser = async (req, res) => {
   }
 
 
+  const loadHomeShipper = async (req, res) =>{
+    try{
+        res.render('shipper/homepage', {user: req.session.user});
+    }
+
+    catch (error){
+        console.log(error.message);
+    }
+}
+
 module.exports = {
     registerLoad,
     register,
@@ -175,5 +187,6 @@ module.exports = {
     postDataUser,
     updateDataUser,
     postUpdateDataUser,
-    deleteDataUser
+    deleteDataUser,
+    loadHomeShipper
 }

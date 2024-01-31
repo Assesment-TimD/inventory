@@ -1,0 +1,49 @@
+<%- include('../../layout/header_shipper.ejs')%>
+<main id="content">
+    <section class="form-section">
+        <div class="container">
+            <div class="row">
+              <div class="content-wrapper">
+                <div class="col-6">
+                    <h2 class="mb-1">Data Shipment</h2>
+                    <p>Kelola data Shipment</p>
+                      <form action="/shipper/createshipments" method="POST">
+                        <div class="mb-3 col-12">
+                            <label for="product" class="form-label">Product</label>
+                            <input name="product" type="product" class="form-control">
+                          </div> 
+                        <div class="mb-3 col-12">
+                            <label for="date" class="form-label">Shipment Date</label>
+                            <input name="date" type="date" class="form-control">
+                          </div> 
+                        <div class="mb-3 col-12">
+                            <label for="address" class="form-label">Shipment Address</label>
+                            <input name="address" class="form-control">
+                        </div>
+                      <div class="mb-3 col-12">
+                        <label for="cost" class="form-label">Cost</label>
+                        <input name="cost" class="form-control">
+                      </div>
+                      <div class="mb-3 col-12">
+                        <label for="weight" class="form-label">Weight</label>
+                        <input name="weight" class="form-control">
+                      </div>
+                      <div class="mb-3 col-12">
+                        <label for="shipper" class="form-label">Shipper</label>
+                        <input name="shipper" class="form-control">
+                      </div>
+                      <div class="mb-3 col-12">
+                        <label for="recipient"  class="form-label">Recipient</label><br>
+                        <input class="form-control" id="recipient" name="recipient">
+                      </div>                    
+                      <input type="submit" value="Submit" class="btn btn-primary">
+                      <a href="/shipper/shipment" type="button" class="btn btn-success">Back</a>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </section>
+</main>
+<%- include('../../layout/footer.ejs') %>
