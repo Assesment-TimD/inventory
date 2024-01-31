@@ -1,0 +1,68 @@
+<%- include('../../layout/header.ejs')%>
+<main id="content">
+    <section class="form-section">
+        <div class="container">
+            <div class="row">
+              <div class="content-wrapper">
+                <div class="col-6">
+                    <h2 class="mb-1">Data Product</h2>
+                    <p>Kelola data product</p>
+                      <form action="/createproducts" method="POST">
+                        <div class="mb-3 col-12">
+                            <label for="exampleInputPassword1" class="form-label">Product Name</label>
+                            <input name="product" class="form-control">
+                          </div> 
+                        <div class="mb-3 col-12">
+                            <label for="exampleInputPassword1" class="form-label">Category</label>
+                            <select id="category" name="category">
+
+                              <select id="category" name="category">
+                                <%
+                                var options = ["Electronics", "Clothing", "Housewares", "Sports", "Toys"];
+                                for (var i = 0; i < options.length; i++) {
+                                    var selected = (product && product.length > 0 && product[0].category == options[i]) ? "selected" : "";
+                                %>
+                                    <option value="<%= options[i] %>" <%= selected %>><%= options[i] %></option>
+                                <% } %>
+                            </select>
+                            
+                          </select>
+                        </div>
+                      <div class="mb-3 col-12">
+                        <label for="exampleInputEmail1" class="form-label">Harga</label>
+                        <input name="price" class="form-control" aria-describedby="emailHelp" >
+                      </div>
+                      <div class="mb-3 col-12">
+                        <label for="exampleInputEmail1" class="form-label">QTY</label>
+                        <input name="qty" class="form-control">
+                      </div>
+                      <div class="mb-3 col-12">
+                        <label for="exampleInputPassword1" class="form-label">Status</label>
+                        <% product.schema.obj.status.enumValues.forEach(status => { %>
+                          <option value="<%= status %>"><%= status %></option>
+                      <% }); %>
+                      </div>
+                      <div class="mb-3 col-12">
+                        <label for="brand"  class="form-label">Brand</label><br>
+                        <input class="form-control" id="brand" name="brand">
+                      </div>  
+                      <div class="mb-3 col-12">
+                        <label for="supplier"  class="form-label">Supplier</label><br>
+                        <input class="form-control" id="supplier" name="supplier">
+                      </div>                      
+                      <input type="submit" value="Submit" class="btn btn-primary">
+                      <a href="/admin/product" type="button" class="btn btn-success">Back</a>
+                    </form>
+                  </div>
+                </div>
+                <div class="content-wrapper">
+                  <div class="col-6">
+                    <img src="img/login.png" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </section>
+</main>
+<%- include('../../layout/footer.ejs') %>

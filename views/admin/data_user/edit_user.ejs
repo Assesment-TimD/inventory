@@ -1,0 +1,51 @@
+<%- include('../../layout/header.ejs')%>
+<main id="content">
+    <section class="form-section">
+        <div class="container">
+            <div class="row">
+              <div class="content-wrapper">
+                <div class="col-6">
+                    <h2 class="mb-1">Data User</h2>
+                    <p>Kelola data user</p>
+                      <form action="/update_users/<%= users.id %>" method="POST">
+                        <div class="mb-3 col-12">
+                            <label for="exampleInputPassword1" class="form-label">Username</label>
+                            <input name="username" class="form-control" value="<%= users.username %>">
+                          </div>
+                       
+                       <div class="mb-3 col-12">
+                        <label for="exampleInputPassword1" class="form-label">Name</label>
+                        <input name="fullname" class="form-control" value="<%= users.name %>">
+                      </div> 
+                      <div class="mb-3 col-12">
+                        <label for="exampleInputEmail1" class="form-label">Email</label>
+                        <input name="email" class="form-control" aria-describedby="emailHelp" value="<%= users.email %>" >
+                      </div>
+                      <div class="mb-3 col-12">
+                        <label for="exampleInputEmail1" class="form-label">Phone Number</label>
+                        <input name="tlp" class="form-control" value="<%= users.tlp %>">
+                      </div>
+                      <div class="mb-3 col-12">
+                        <label for="tahun"  class="form-label">Alamat</label><br>
+                        <input class="form-control" id="tahun" name="alamat" value="<%= users.alamat %>">
+                      </div>    
+                      <div class="mb-3 col-12">
+                        <label for="role"  class="form-label">Role</label><br>
+                        <input class="form-control" id="role" name="role" value="<%= users.role %>">
+                      </div>                     
+                      <input type="submit" value="Submit" class="btn btn-primary">
+                      <a href="/admin/data_user/read" type="button" class="btn btn-success">Back</a>
+                    </form>
+                  </div>
+                </div>
+                <div class="content-wrapper">
+                  <div class="col-6">
+                    <img src="img/login.png" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </section>
+</main>
+<%- include('../../layout/footer.ejs') %>

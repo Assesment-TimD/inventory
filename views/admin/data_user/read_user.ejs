@@ -1,0 +1,47 @@
+<%- include('../../layout/header.ejs')%>
+
+<div id="content">
+    <h2>Welcome to the User Page</h2>
+    
+    <a href="/admin/create_user" class="button-create"><i class="fa-solid fa-plus"></i> Create</a>
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Address</th>
+                <th>Role</th>
+                <th>Action</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <% let nomor = 1; %>
+            <% if(user.length > 0 ){
+                for(let i = 0; i <user.length; i++){
+                     %>
+            <tr>
+               <td><%= nomor++ %></td> 
+              <td><%= user[i]['id'] %></td>
+              <td><%= user[i]['username'] %></td>
+              <td><%= user[i]['name'] %></td>
+              <td><%= user[i]['email'] %></td>
+              <td><%= user[i]['tlp'] %></td>
+              <td><%= user[i]['alamat'] %></td>
+              <td><%= user[i]['role'] %></td>
+              <td>
+                <a href="/update_user/<%= user[i]['id'] %>" class="button-edit"id="kolom5" >Update</a>
+                <a href="/delete_user/<%= user[i]['id'] %>" class="button-hapus" id="kolom6">Delete</a>  
+            </td>
+                </tr>
+              </tr>
+            </tr>
+            <%}}%>
+        </tbody>
+    </table>
+</div>
+<%- include('../../layout/footer.ejs') %>
